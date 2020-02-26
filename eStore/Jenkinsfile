@@ -10,14 +10,14 @@ pipeline{
     }
   stage('compile'){
    steps{
-     withMaven(maven: 'mymaven'){
+     withMaven(maven:'mymaven'){
     sh 'mvn compile'
    }
   }
  }
   stage('packaging'){
    steps{
-    withMaven(maven: 'mymaven'){
+    withMaven(maven:'mymaven'){
     sh 'mvn package'
     }
    }
