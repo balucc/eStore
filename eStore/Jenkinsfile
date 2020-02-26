@@ -1,11 +1,11 @@
 pipeline{
+  agent{
+    label 'myslave'
+}
  environment{
    uname = "balucc/estore"
    passwd = "dockerhub"
    dockerImage = ''
-  agent{
-    label 'myslave'
-}
  stages{
   stage('git checkout'){
    steps{
