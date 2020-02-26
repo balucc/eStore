@@ -1,0 +1,26 @@
+pipeline{
+  agent{
+    label 'myslave'
+}
+ stages
+  stage('git checkout'){
+   steps{
+     git 'https://github.com/balucc/eStore.git'
+     }
+    }
+  stage('compile'){
+   steps{
+     withMaven(maven: 'mymaven'){
+    sh 'mvn compile'
+   }
+  }
+ }
+  stage('packaging'){
+   steps{
+    withMaven(maven: 'mymaven'){
+    sh 'mvn package'
+    }
+   }
+  }
+}
+
