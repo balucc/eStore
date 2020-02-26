@@ -1,4 +1,5 @@
 FROM tomcat:7
-ADD ./target/eStore-0.0.1-SNAPSHOT.war /var/lib/tomcat7/webapps
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+ADD ./target/eStore-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/
 CMD ["catalina.sh", "run"]
 
