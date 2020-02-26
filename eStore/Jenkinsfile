@@ -1,4 +1,8 @@
 pipeline{
+ environment{
+   uname = "balucc/estore"
+   passwd = "dockerhub"
+   dockerImage = ''
   agent{
     label 'myslave'
 }
@@ -22,5 +26,26 @@ pipeline{
     }
    }
   }
+stage('DockerBuild'){
+    steps{
+      script{
+        dockerImage = docker.build uname + ":$BUILD_NUMBER"
 }
-}
+}}
+stage('Docker image Push'){
+  steps{
+    script {
+      docker.withRegistry('',passwd) {
+         dockerImage.push()
+          }
+         }     
+        }      
+       }
+stage('DockerRun'){
+  steps{
+      sh "docker run -itd -p 8081:80 $uname:$BUILD_NUMBER"
+    }
+   }
+  }
+ }
+}      
