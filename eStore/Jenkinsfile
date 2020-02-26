@@ -44,7 +44,7 @@ stage('Docker image Push'){
        }
 stage('DockerRun'){
   steps{
-      sh "docker run -itd -p 8081:80 $uname:$BUILD_NUMBER"
+      sh "docker run -itd -p 8085:80 $uname:$BUILD_NUMBER"
     }
    }
   }
