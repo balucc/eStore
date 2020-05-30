@@ -15,4 +15,4 @@ pipeline{
        withMaven(maven:'myMaven'){
         sh 'mvn package'
        }}} 
-     
+    }} 
